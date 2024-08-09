@@ -33,79 +33,79 @@ import net.minecraft.util.text.*;
 
 public final class CommandHandler extends CommandBase {
 
-    private static final String NAME = "blockpartyesp";
+	private static final String NAME = "blockpartyesp";
 
-    private static final String USAGE = "blockpartyesp <enable|disable>";
+	private static final String USAGE = "blockpartyesp <enable|disable>";
 
-    private static final String[] ALIASES = { "bpesp" };
+	private static final String[] ALIASES = { "bpesp" };
 
-    private static final String ENABLE_ACTION = "enable";
+	private static final String ENABLE_ACTION = "enable";
 
-    private static final String DISABLE_ACTION = "disable";
+	private static final String DISABLE_ACTION = "disable";
 
-    private static final String TOGGLE_ACTION = "toggle";
+	private static final String TOGGLE_ACTION = "toggle";
 
-    private static final BlockHighlighter HIGHLIGHTER = BlockHighlighter.instance();
+	private static final BlockHighlighter HIGHLIGHTER = BlockHighlighter.instance();
 
-    private static void sendMessage(ICommandSender sender, String message) {
-	sender.sendMessage(new TextComponentString(message));
-    }
-
-    private static void printStatus(ICommandSender sender) {
-	sendMessage(sender, "\u00a7a\u00a7lBlock Party ESP " + (HIGHLIGHTER.isEnabled() ? "enabled" : "disabled"));
-    }
-
-    @Override
-    public String getName() {
-	return NAME;
-    }
-
-    @Override
-    public String getUsage(ICommandSender sender) {
-	return USAGE;
-    }
-
-    @Override
-    public List<String> getAliases() {
-	return Arrays.asList(ALIASES);
-    }
-
-    @Override
-    public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
-	if (args.length != 1) {
-	    throw new CommandException("\u00a74\u00a7lBlock Party ESP:\u00a7c Wrong usage");
+	private static void sendMessage(ICommandSender sender, String message) {
+		sender.sendMessage(new TextComponentString(message));
 	}
 
-	final String action = args[0];
-
-	if (action.equalsIgnoreCase(ENABLE_ACTION)) {
-	    HIGHLIGHTER.setEnabled(true);
-	    printStatus(sender);
-	} else if (action.equalsIgnoreCase(DISABLE_ACTION)) {
-	    HIGHLIGHTER.setEnabled(false);
-	    printStatus(sender);
-	} else if (action.equalsIgnoreCase(TOGGLE_ACTION)) {
-	    HIGHLIGHTER.setEnabled(!HIGHLIGHTER.isEnabled());
-	    printStatus(sender);
-	} else {
-	    throw new CommandException("\u00a74\u00a7lBlock Party ESP:\u00a7c Unknown action \"" + action + "\"");
+	private static void printStatus(ICommandSender sender) {
+		sendMessage(sender, "\u00a7a\u00a7lBlock Party ESP " + (HIGHLIGHTER.isEnabled() ? "enabled" : "disabled"));
 	}
-    }
 
-    @Override
-    public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
-	return true;
-    }
+	@Override
+	public String getName() {
+		return NAME;
+	}
 
-    @Override
-    public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args,
-	    BlockPos targetPos) {
-	return Arrays.asList(ENABLE_ACTION, DISABLE_ACTION, TOGGLE_ACTION);
-    }
+	@Override
+	public String getUsage(ICommandSender sender) {
+		return USAGE;
+	}
 
-    @Override
-    public boolean isUsernameIndex(String[] args, int index) {
-	return false;
-    }
+	@Override
+	public List<String> getAliases() {
+		return Arrays.asList(ALIASES);
+	}
+
+	@Override
+	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
+		if (args.length != 1) {
+			throw new CommandException("\u00a74\u00a7lBlock Party ESP:\u00a7c Wrong usage");
+		}
+
+		final String action = args[0];
+
+		if (action.equalsIgnoreCase(ENABLE_ACTION)) {
+			HIGHLIGHTER.setEnabled(true);
+			printStatus(sender);
+		} else if (action.equalsIgnoreCase(DISABLE_ACTION)) {
+			HIGHLIGHTER.setEnabled(false);
+			printStatus(sender);
+		} else if (action.equalsIgnoreCase(TOGGLE_ACTION)) {
+			HIGHLIGHTER.setEnabled(!HIGHLIGHTER.isEnabled());
+			printStatus(sender);
+		} else {
+			throw new CommandException("\u00a74\u00a7lBlock Party ESP:\u00a7c Unknown action \"" + action + "\"");
+		}
+	}
+
+	@Override
+	public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
+		return true;
+	}
+
+	@Override
+	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args,
+			BlockPos targetPos) {
+		return Arrays.asList(ENABLE_ACTION, DISABLE_ACTION, TOGGLE_ACTION);
+	}
+
+	@Override
+	public boolean isUsernameIndex(String[] args, int index) {
+		return false;
+	}
 
 }

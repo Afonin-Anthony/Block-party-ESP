@@ -1,0 +1,13 @@
+# gradle
+.gradle/
+build/
+bin/
+
+# forge
+run/
+run-data
+
+# eclipse
+.settings/
+.classpath
+.project

@@ -35,52 +35,52 @@ import net.minecraft.util.math.*;
 
 public class RenderingUtil {
 
-    private static final Tessellator TESSELATOR = Tessellator.getInstance();
+	private static final Tessellator TESSELATOR = Tessellator.getInstance();
 
-    private static final BufferBuilder BUILDER = TESSELATOR.getBuffer();
+	private static final BufferBuilder BUILDER = TESSELATOR.getBuffer();
 
-    private RenderingUtil() {
-	throw new AssertionError("No RenderingUtil instances for you!");
-    }
+	private RenderingUtil() {
+		throw new AssertionError("No RenderingUtil instances for you!");
+	}
 
-    public static void beginDraw() {
-	GlStateManager.enableBlend();
-	GlStateManager.blendFunc(SourceFactor.SRC_ALPHA, DestFactor.ONE_MINUS_SRC_ALPHA);
+	public static void beginDraw() {
+		GlStateManager.enableBlend();
+		GlStateManager.blendFunc(SourceFactor.SRC_ALPHA, DestFactor.ONE_MINUS_SRC_ALPHA);
 
-	GlStateManager.disableTexture2D();
-	GlStateManager.enableCull();
-	GlStateManager.disableDepth();
-	GlStateManager.pushMatrix();
+		GlStateManager.disableTexture2D();
+		GlStateManager.enableCull();
+		GlStateManager.disableDepth();
+		GlStateManager.pushMatrix();
 
-	RenderManager renderManager = Minecraft.getMinecraft().getRenderManager();
+		RenderManager renderManager = Minecraft.getMinecraft().getRenderManager();
 
-	GlStateManager.translate(-renderManager.viewerPosX, -renderManager.viewerPosY, -renderManager.viewerPosZ);
-    }
+		GlStateManager.translate(-renderManager.viewerPosX, -renderManager.viewerPosY, -renderManager.viewerPosZ);
+	}
 
-    public static void endDraw() {
-	GlStateManager.popMatrix();
-	GlStateManager.enableTexture2D();
-	GlStateManager.disableBlend();
-    }
+	public static void endDraw() {
+		GlStateManager.popMatrix();
+		GlStateManager.enableTexture2D();
+		GlStateManager.disableBlend();
+	}
 
-    public static void setColor(int red, int green, int blue, int alpha) {
-	GlStateManager.color(red / 255f, green / 255f, blue / 255f, alpha / 255f);
-    }
+	public static void setColor(int red, int green, int blue, int alpha) {
+		GlStateManager.color(red / 255f, green / 255f, blue / 255f, alpha / 255f);
+	}
 
-    public static void drawBlockHighlight(AxisAlignedBB aabb) {
-	drawBlockHighlight(aabb.minX, aabb.minY, aabb.minZ, aabb.maxX, aabb.maxY, aabb.maxZ);
-    }
+	public static void drawBlockHighlight(AxisAlignedBB aabb) {
+		drawBlockHighlight(aabb.minX, aabb.minY, aabb.minZ, aabb.maxX, aabb.maxY, aabb.maxZ);
+	}
 
-    public static void drawBlockHighlight(double minX, double minY, double minZ, double maxX, double maxY,
-	    double maxZ) {
+	public static void drawBlockHighlight(double minX, double minY, double minZ, double maxX, double maxY,
+			double maxZ) {
 
-	BUILDER.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION);
+		BUILDER.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION);
 
-	BUILDER.pos(minX, maxY, minZ).endVertex();
-	BUILDER.pos(minX, maxY, maxZ).endVertex();
-	BUILDER.pos(maxX, maxY, maxZ).endVertex();
-	BUILDER.pos(maxX, maxY, minZ).endVertex();
+		BUILDER.pos(minX, maxY, minZ).endVertex();
+		BUILDER.pos(minX, maxY, maxZ).endVertex();
+		BUILDER.pos(maxX, maxY, maxZ).endVertex();
+		BUILDER.pos(maxX, maxY, minZ).endVertex();
 
-	TESSELATOR.draw();
-    }
+		TESSELATOR.draw();
+	}
 }
