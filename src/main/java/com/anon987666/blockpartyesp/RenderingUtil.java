@@ -61,6 +61,7 @@ public class RenderingUtil {
 		GlStateManager.popMatrix();
 		GlStateManager.enableTexture2D();
 		GlStateManager.disableBlend();
+		GlStateManager.enableDepth();
 	}
 
 	public static void setColor(int red, int green, int blue, int alpha) {

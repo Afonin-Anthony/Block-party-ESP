@@ -34,9 +34,9 @@ public final class Settings {
 
 		@Name("Field size")
 		@Comment({ "Playing field size, in blocks", "Note: too high values may cause performance degradation" })
-		@RangeInt(min = 5, max = 60)
+		@RangeInt(min = 5, max = 80)
 		@SlidingOption
-		public static int fieldSize = 40;
+		public static int fieldSize = 50;
 
 		@Name("Items offset")
 		@Comment("Hotbar slot number from which the blocks come in order")
