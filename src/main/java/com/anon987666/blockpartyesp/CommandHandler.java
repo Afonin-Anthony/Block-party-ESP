@@ -35,7 +35,7 @@ public final class CommandHandler extends CommandBase {
 
 	private static final String NAME = "blockpartyesp";
 
-	private static final String USAGE = "blockpartyesp <enable|disable>";
+	private static final String USAGE = "blockpartyesp <enable|disable|toggle>";
 
 	private static final String[] ALIASES = { "bpesp" };
 
