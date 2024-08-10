@@ -3,7 +3,7 @@
 		"modid": "blockpartyesp",
 		"name": "Block Party ESP",
 		"description": "Highlights blocks in the block party mini game",
-		"version": "1.0.0",
+		"version": "1.0.1",
 		"mcversion": "1.12.2",
 		"url": "",
 		"updateUrl": "",
