@@ -19,6 +19,3 @@ You must specify the slot in hotbar starting from which the correct blocks are l
 
 ## License
 Block party ESP is provided under MIT license. Feel free to explore, make changes and share with friends!
-
-## Contributing
-find me gf pls..
